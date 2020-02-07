@@ -22,7 +22,7 @@ public class ClientConnessione {
 			messaggio = in.readLine();
 			System.out.println("Messaggio dal server: " + messaggio);
 			messaggio = in.readLine();
-			System.out.println("Messaggio dal client: " + messaggio);
+			System.out.println("Messaggio dal server: " + messaggio);
 			connessione.close();
 			System.out.println("connessione chiusa");
 		} catch (IOException ex) {
