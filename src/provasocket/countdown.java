@@ -25,14 +25,9 @@ public class countdown extends Thread{
 				System.out.println("ERRORE Interruzione del conto alla rovescia");
 			}
 		}
-		//interrompi();
 	}
 	
-	/*public void interrompi(){
-		this.interrupt();
-	}*/
-	
-	public void setConnesso(boolean connesso){
-		this.connesso=connesso;
+	public void setConnesso(){
+		this.connesso=true;
 	}
 }

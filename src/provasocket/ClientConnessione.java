@@ -21,14 +21,8 @@ public class ClientConnessione {
 			out.println("Sono il Client!!!");
 			messaggio = in.readLine();
 			System.out.println("Messaggio dal server: " + messaggio);
-			/*while(messaggio.compareTo("connessione chiusa") != 0);
-			{
-				System.out.println("Chat con il Server");
-				riga.readLine();
-				out.println(riga);
-				messaggio = in.readLine();
-				System.out.println("Messaggio dal Server: " + messaggio);
-			}*/
+			messaggio = in.readLine();
+			System.out.println("Messaggio dal client: " + messaggio);
 			connessione.close();
 			System.out.println("connessione chiusa");
 		} catch (IOException ex) {

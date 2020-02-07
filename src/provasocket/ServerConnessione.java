@@ -23,20 +23,14 @@ public class ServerConnessione {
 				thread.start();
 				connessione = sSocket.accept();
 				System.out.println("Connessione stabilita");
-				thread.setConnesso(true);
+				thread.setConnesso();
 				BufferedReader in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
 				PrintWriter out = new PrintWriter(connessione.getOutputStream(), true);
 				messaggio = in.readLine();
 				System.out.println("Messaggio dal client: " + messaggio);
 				out.println("Sono il Server!!!");
-				/*while (messaggio.compareTo("chiudi") != 0) 
-				{
-					System.out.println("Chat con il Client");
-					riga.readLine();
-					out.println(riga);
-					messaggio = in.readLine();
-					System.out.println("Messaggio dal Client: " + messaggio);
-				}*/
+				riga.readLine();
+				out.println(riga);
 				sSocket.close();
 				System.out.println("connessione chiusa");
 			} catch (SocketTimeoutException ex) {
