@@ -24,17 +24,20 @@ public class ServerConnessione {
 				countdown count = new countdown(millisecondi);
 				count.start();
 				connessione = sSocket.accept();
-				System.out.println("Connessione stabilita");
-				
 				count.setConnesso();
+				System.out.println("Connessione stabilita");
 				BufferedReader in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
 				PrintWriter out = new PrintWriter(connessione.getOutputStream(), true);
 				messaggio = in.readLine();
 				System.out.println("Messaggio dal client: " + messaggio);
 				out.println("Sono il Server!!!");
-				System.out.println("Manda un messaggio al client");
-				stringa=riga.readLine();
-				out.println(stringa);
+				do {
+					System.out.println("Manda un messaggio al client");
+					stringa=riga.readLine();
+					out.println(stringa);
+					messaggio = in.readLine();
+					System.out.println("Messaggio dal client: " + messaggio);
+				}while(messaggio.compareTo("ESCI")!=0);
 				sSocket.close();
 				System.out.println("connessione chiusa");
 			} catch (SocketTimeoutException ex) {
