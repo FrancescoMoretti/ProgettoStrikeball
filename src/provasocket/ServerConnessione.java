@@ -8,9 +8,8 @@ public class ServerConnessione {
 
 	public static void main(String[] args) {
 		ServerSocket sSocket;
-		ArrayList <ClientThread> connessioni= new ArrayList<ClientThread>();
 		int porta = 3500;
-		int millisecondi = 5000;
+		int millisecondi = 10000;
 		boolean open = true;
 		String messaggio = "";
 		InputStreamReader reader = new InputStreamReader(System.in);
@@ -24,9 +23,8 @@ public class ServerConnessione {
 				System.out.println("in attesa di connessioni...");
 				countdown count = new countdown(millisecondi);
 				count.start();
-				connessioni.add(new ClientThread(sSocket.accept()));
-				//connessione = sSocket.accept();
-				
+				connessione = sSocket.accept();
+				System.out.println("Connessione stabilita");
 				
 				count.setConnesso();
 				BufferedReader in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
