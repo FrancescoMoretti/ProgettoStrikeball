@@ -20,15 +20,15 @@ public class ClientConnessione {
 			BufferedReader in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
 			PrintWriter out = new PrintWriter(connessione.getOutputStream(), true);
 			out.println("Sono il Client!!!");
-			do {
-				messaggio = in.readLine();
-				System.out.println("Messaggio dal server: " + messaggio);
+			messaggio = in.readLine();
+			System.out.println("Messaggio dal server: " + messaggio);
+			do {	
 				messaggio = in.readLine();
 				System.out.println("Messaggio dal server: " + messaggio);
 				System.out.println("Manda un messaggio al server(per chiudere la chat:ESCI)");
 				stringa=riga.readLine();
 				out.println(stringa);
-			}while(stringa.compareTo("esci")!=0);
+			}while(stringa.compareTo("ESCI")!=0);
 			connessione.close();
 			System.out.println("connessione chiusa");
 		} catch (IOException ex) {
