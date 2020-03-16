@@ -11,10 +11,6 @@ public class ServerConnessione {
 		int porta = 3500;
 		int millisecondi = 10000;
 		boolean open = true;
-		String messaggio = "";
-		InputStreamReader reader = new InputStreamReader(System.in);
-		BufferedReader riga = new BufferedReader(reader);
-		String stringa="";
 		while (open) {
 			try {
 				sSocket = new ServerSocket(porta);
@@ -26,18 +22,8 @@ public class ServerConnessione {
 				connessione = sSocket.accept();
 				count.setConnesso();
 				System.out.println("Connessione stabilita");
-				BufferedReader in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
-				PrintWriter out = new PrintWriter(connessione.getOutputStream(), true);
-				messaggio = in.readLine();
-				System.out.println("Messaggio dal client: " + messaggio);
-				out.println("Sono il Server!!!");
-				do {
-					System.out.println("Manda un messaggio al client");
-					stringa=riga.readLine();
-					out.println(stringa);
-					messaggio = in.readLine();
-					System.out.println("Messaggio dal client: " + messaggio);
-				}while(messaggio.compareTo("ESCI")!=0);
+				ServerChat chat=new ServerChat(connessione);
+				chat.chat();
 				sSocket.close();
 				System.out.println("connessione chiusa");
 			} catch (SocketTimeoutException ex) {
