@@ -1,6 +1,6 @@
 package provasocket;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
+import java.util.*;
 
 /*
  * @author Francesco Moretti
@@ -15,7 +15,7 @@ public class countdown extends Thread{
 	}
 	
 	public void run(){
-		while(tempo>0 && connesso==false)
+		while(tempo>0 && connesso==false)//finchè c'è tempo o qualcuno si connette
 		{
 			try {
 				System.out.println(tempo/1000);
@@ -27,6 +27,7 @@ public class countdown extends Thread{
 		}
 	}
 	
+	//metodo per l'interruzione del conto alla rovescia
 	public void setConnesso(){
 		this.connesso=true;
 	}

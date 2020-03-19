@@ -19,6 +19,7 @@ public class ClientChat {
 			System.out.println("Errore nella creazione dell'oggetto per ricevere messaggi");
 		}
 	}
+	
 	public void chat() {
 		String stringa = "";
 		out.println("Sono il Client!!!");
@@ -27,6 +28,7 @@ public class ClientChat {
 			riceviMessaggio();
 			stringa=inviaMessaggio();
 		} while (stringa.compareTo("ESCI") != 0);
+		chiudi();
 	}
 
 	public void riceviMessaggio() {
@@ -49,6 +51,17 @@ public class ClientChat {
 		} catch (IOException e) {
 			System.out.println("Errore nell'invio di un messaggio");
 			return "ESCI";
+		}
+	}
+	
+	public void chiudi() {
+		try {
+			in.close();
+			out.close();
+			reader.close();
+			riga.close();
+		} catch (IOException e) {
+			System.out.println("Errore nella chiusura degli stream lato client");
 		}
 	}
 }

@@ -52,4 +52,14 @@ public class ServerChat {
 			System.out.println("Errore nell'invio di un messaggio");
 		}
 	}
+	public void chiudi() {
+		try {
+			in.close();
+			out.close();
+			reader.close();
+			riga.close();
+		} catch (IOException e) {
+			System.out.println("Errore nella chiusura degli stream lato server");
+		}
+	}
 }
