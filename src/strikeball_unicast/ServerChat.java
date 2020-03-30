@@ -15,26 +15,27 @@ public class ServerChat {
 	public ServerChat(Socket connessione) {
 		this.connessione = connessione;
 		try {
-			in = new BufferedReader(new InputStreamReader(connessione.getInputStream()));
-			out = new PrintWriter(connessione.getOutputStream(), true);
+			in = new BufferedReader(new InputStreamReader(this.connessione.getInputStream()));
+			out = new PrintWriter(this.connessione.getOutputStream(), true);
 			partita = new Gioco();
 			vet = new String[4];
-			vet[0]="";
-			vet[1]="";
-			vet[2]="";
-			vet[3]="";
+			vet[0] = "";
+			vet[1] = "";
+			vet[2] = "";
+			vet[3] = "";
 		} catch (IOException e) {
 			System.out.println("Errore nella creazione dell'oggetto per ricevere messaggi");
 		}
 	}
 
 	public void chat() {
-		String messaggio="";
-		out.println("Partita iniziata, indovina 4 numeri da 0 a 9, hai "+partita.getVite()+" vite"+" ***per test"+partita.bara()+"***");
-		while(messaggio.compareTo("Spiacente, hai perso... Riconnettiti per giocare ancora")!=0 && messaggio.compareTo("Complimenti!!! Hai indovinato")!=0)
-		{
+		String messaggio = "";
+		out.println("Partita iniziata, indovina 4 numeri da 0 a 9, hai " + partita.getVite() + " vite" + " ***per test"
+				+ partita.bara() + "***");
+		while (messaggio.compareTo("Spiacente, hai perso... Riconnettiti per giocare ancora") != 0
+				&& messaggio.compareTo("Complimenti!!! Hai indovinato") != 0) {
 			riceviMessaggio();
-			messaggio=inviaMessaggio();
+			messaggio = inviaMessaggio();
 		}
 	}
 
@@ -47,8 +48,8 @@ public class ServerChat {
 	}
 
 	public String inviaMessaggio() {
-		String messaggio="";
-		messaggio=partita.confronto(vet[0], vet[1], vet[2], vet[3]);
+		String messaggio = "";
+		messaggio = partita.confronto(vet[0], vet[1], vet[2], vet[3]);
 		out.println(messaggio);
 		return messaggio;
 	}

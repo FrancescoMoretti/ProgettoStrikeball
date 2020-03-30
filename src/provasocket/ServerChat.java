@@ -22,7 +22,7 @@ public class ServerChat {
 
 	public void chat() {
 		String messaggio = "";
-		messaggio=riceviMessaggio();
+		messaggio = riceviMessaggio();
 		out.println("Sono il server!!!");
 		do {
 			inviaMessaggio();
@@ -52,6 +52,7 @@ public class ServerChat {
 			System.out.println("Errore nell'invio di un messaggio");
 		}
 	}
+
 	public void chiudi() {
 		try {
 			in.close();

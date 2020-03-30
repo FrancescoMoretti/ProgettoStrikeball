@@ -14,8 +14,8 @@ public class ClientConnessione {
 			String server = "localhost";
 			connessione = new Socket(server, porta);
 			System.out.println("connessione aperta");
-			ClientChat chat=new ClientChat(connessione);//creo l'oggetto per chattare e gli passo il socket
-			chat.chat();//avvio il metodo che gestisce la chat
+			ClientChat chat = new ClientChat(connessione);// creo l'oggetto per chattare e gli passo il socket
+			chat.chat();// avvio il metodo che gestisce la chat
 			connessione.close();
 			System.out.println("connessione chiusa");
 		} catch (IOException ex) {

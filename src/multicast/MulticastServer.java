@@ -5,8 +5,7 @@ import java.io.*;
 import java.util.*;
 
 public class MulticastServer {
-	public static void main(String[]args)
-	{
+	public static void main(String[] args) {
 		boolean attivo = true;
 		byte[] bufferOUT = new byte[1024];
 		int conta = 20;
@@ -14,26 +13,24 @@ public class MulticastServer {
 		try {
 			InetAddress gruppo = InetAddress.getByName("225.4.5.6");
 			MulticastSocket socket = new MulticastSocket();
-			//contenitore per il dato da trasmettere
+			// contenitore per il dato da trasmettere
 			String dString = null;
-			//ciclo di trasmissione
-			while(attivo)
-			{
-				//invio della data e ora di sistema
+			// ciclo di trasmissione
+			while (attivo) {
+				// invio della data e ora di sistema
 				dString = new Date().toString();
 				bufferOUT = dString.getBytes();
-				//creo il DatagramPacket
+				// creo il DatagramPacket
 				DatagramPacket packet = new DatagramPacket(bufferOUT, bufferOUT.length, gruppo, porta);
-				//invio il dato
+				// invio il dato
 				socket.send(packet);
 				Thread.sleep(1000);
 				conta--;
-				if(conta==0) {
+				if (conta == 0) {
 					System.out.println("Server in chiusura");
-					attivo=false;
-				}
-				else {
-					System.out.println("Server attivo per altri "+conta+" secondi");
+					attivo = false;
+				} else {
+					System.out.println("Server attivo per altri " + conta + " secondi");
 				}
 			}
 			socket.close();

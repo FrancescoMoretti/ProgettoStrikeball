@@ -9,7 +9,7 @@ public class ClientChat {
 	PrintWriter out;
 	InputStreamReader reader = new InputStreamReader(System.in);
 	BufferedReader riga = new BufferedReader(reader);
-	
+
 	public ClientChat(Socket connessione) {
 		this.connessione = connessione;
 		try {
@@ -19,14 +19,14 @@ public class ClientChat {
 			System.out.println("Errore nella creazione dell'oggetto per ricevere messaggi");
 		}
 	}
-	
+
 	public void chat() {
 		String stringa = "";
 		out.println("Sono il Client!!!");
 		riceviMessaggio();
 		do {
 			riceviMessaggio();
-			stringa=inviaMessaggio();
+			stringa = inviaMessaggio();
 		} while (stringa.compareTo("ESCI") != 0);
 		chiudi();
 	}
@@ -53,7 +53,7 @@ public class ClientChat {
 			return "ESCI";
 		}
 	}
-	
+
 	public void chiudi() {
 		try {
 			in.close();

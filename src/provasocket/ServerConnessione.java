@@ -17,13 +17,14 @@ public class ServerConnessione {
 				sSocket.setSoTimeout(millisecondi);
 				Socket connessione;
 				System.out.println("in attesa di connessioni...");
-				countdown count = new countdown(millisecondi);//creo il thread per il conto alla rovescia e gli passo il numero da cui partire (in ms)
-				count.start();//parte il conto alla rovescia
+				countdown count = new countdown(millisecondi);// creo il thread per il conto alla rovescia e gli passo
+																// il numero da cui partire (in ms)
+				count.start();// parte il conto alla rovescia
 				connessione = sSocket.accept();
-				count.setConnesso();//interrompo il conto alla rovescia
+				count.setConnesso();// interrompo il conto alla rovescia
 				System.out.println("Connessione stabilita");
-				ServerChat chat=new ServerChat(connessione);//creo l'oggetto per chattare e gli passo il socket
-				chat.chat();//avvio il metodo che gestisce la chat
+				ServerChat chat = new ServerChat(connessione);// creo l'oggetto per chattare e gli passo il socket
+				chat.chat();// avvio il metodo che gestisce la chat
 				connessione.close();
 				sSocket.close();
 				System.out.println("connessione chiusa");
